@@ -1,0 +1,47 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct fnode
+{
+        int pno;
+}
+frames[5];
+int ref_str[]={3,4,5,6,3,4,7,3,4,5,6,7,2,4,6};
+int pfct=0,i,n,pno,p,flag=0;
+int len=15;
+int page_found(int pno)
+{
+        for(i=0; i<n; i++)
+                if(frames[i].pno==pno)
+                        return 0;
+}
+main()
+{
+        printf("\nenter no of frames:");
+        scanf("%d",&n);
+        printf("len:%d",len);
+        for (i=0;i<n;i++)
+                frames[i],pno==-1;
+        printf("\n page no page frmaes page fault pfct");
+        printf("\n              \n");
+        for(p=0; p<len;p++)
+        {
+                pno=ref_str[p];
+                flag=0;
+                if(page_found(pno)==0)
+                {
+                        frames[pfct%n].pno=pno;
+                        pfct++;
+                        flag=1;
+                }
+                printf("\n%fd\t",pno);
+                for(i=0;i<n;i++)
+                        printf("%d",frames[i]);
+                if(flag==1)
+                printf("\n yes");
+                else
+                printf("\n NO");
+                printf("t%d",pfct);
+        }
+        printf("\n           ");
+                printf("\n total no page fault: %d", pfct);
+}
